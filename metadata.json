@@ -1,0 +1,6 @@
+{
+  "name": "ParkSG - Real-Time Singapore Carpark Tracker",
+  "description": "Live Singapore carpark lot availability tracker with interactive map, HDB/URA/LTA data feeds, vacancy trends, and parking rate calculator.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
