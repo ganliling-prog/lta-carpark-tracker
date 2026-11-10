@@ -160,6 +160,10 @@ export async function fetchLiveCarparks(customEndpoint?: string): Promise<Carpar
 
     const data = await response.json();
 
+    if (data && data.status === 'pending_configuration') {
+      throw new Error(data.message);
+    }
+
     // If data is array of Carpark, return directly
     if (Array.isArray(data)) {
       return data;
@@ -167,6 +171,9 @@ export async function fetchLiveCarparks(customEndpoint?: string): Promise<Carpar
 
     // If data follows Singapore LTA DataMall structure: { value: [{ CarParkID, Area, Development, AvailableLots, LotType, Agency }] }
     if (data && Array.isArray(data.value)) {
+      if (data.value.length === 0) {
+        return INITIAL_CARPARKS;
+      }
       return data.value.map((item: any) => ({
         id: item.CarParkID || `CP-${Math.random().toString(36).substring(7)}`,
         name: item.Development || 'Singapore Carpark',

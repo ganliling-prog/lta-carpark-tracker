@@ -15,7 +15,7 @@ export const BackendIntegrationModal: React.FC<BackendIntegrationModalProps> = (
   onClose,
   onTestConnection,
 }) => {
-  const [testUrl, setTestUrl] = useState<string>(config.apiUrl || 'http://localhost:3000/api/carparks');
+  const [testUrl, setTestUrl] = useState<string>(config.apiUrl || '/api/carparkavailability');
   const [testing, setTesting] = useState<boolean>(false);
   const [testResult, setTestResult] = useState<{ success: boolean; message: string; count?: number } | null>(null);
   const [activeCodeTab, setActiveCodeTab] = useState<'express' | 'python' | 'lta'>('express');
